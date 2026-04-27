@@ -1,0 +1,120 @@
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#ffd9e5;
+    font-family:Arial, sans-serif;
+}
+
+.app{
+    text-align:center;
+    width:100%;
+}
+
+.header{
+    color:#d46a8b;
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.sub{
+    color:#d46a8b;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.stage{
+    width:330px;
+    height:260px;
+    margin:0 auto;
+    perspective:900px;
+}
+
+.wrapper{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform:rotate(-3deg);
+    transition:transform 0.5s ease;
+}
+
+.wrapper.open{
+    transform:rotate(2deg) scale(1.02);
+}
+
+.envelope{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:170px;
+    background:#f5a6bc;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.18);
+    cursor:pointer;
+
+    overflow:visible;
+}
+
+.flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#f19bb4;
+    transform-origin:top;
+    transform:rotateX(0deg);
+    transition:transform 0.7s cubic-bezier(0.2,0.8,0.2,1);
+    clip-path:polygon(0 0,50% 58%,100% 0,100% 0,0 0);
+    z-index:5;
+}
+
+.wrapper.open .flap{
+    transform:rotateX(180deg);
+}
+
+.letter{
+    position:absolute;
+    left:12px;
+    bottom:12px;
+    width:306px;
+    max-height:150px;
+
+    background:#ffeef3;
+    border-radius:10px;
+    padding:14px;
+    box-sizing:border-box;
+
+    color:#c75a7d;
+    font-size:13px;
+    line-height:1.5;
+
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+
+    opacity:0;
+    pointer-events:none;
+
+    transform:translateY(140px) scale(0.95);
+
+    transition:
+        transform 0.7s cubic-bezier(0.2,0.8,0.2,1),
+        opacity 0.4s ease;
+
+    z-index:10;
+}
+
+.wrapper.open .letter{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(-70px) scale(1);
+}
+
+.hint{
+    margin-top:16px;
+    color:#c75a7d;
+    font-size:12px;
+}
